@@ -1,0 +1,34 @@
+/****************************************************************
+*                                                               *
+*                  Landscape and Portrait settings              *
+*                                                               *
+****************************************************************/
+
+/* Set the base text size for portrait mode */
+@media only screen and (orientation : portrait)
+{
+    html
+    {
+        font-size: 2.5vw;
+    }
+      
+    /*sets certain divs to stack when in portrait mode instead of being inline*/
+    .phonify
+    {
+        display:block;
+        width: 100%;
+    }
+}
+/********************************************/
+
+
+/* Set the base text size for landscape mode */
+@media only screen and (orientation : landscape)
+{
+    html
+    {
+        font-size: 1.7vw;
+    }
+    
+}
+/********************************************/

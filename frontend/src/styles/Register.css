@@ -1,0 +1,38 @@
+.reg-failure {
+    font-size: 50%;
+    color:rgb(105, 30, 30);
+    box-shadow: 2px 2px 10px red;
+}
+
+.visually-hidden {
+    position: absolute;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    width: 1px;
+    height: 1px;
+    white-space: nowrap;
+  }
+
+.regpage{
+    padding-top: 10px;
+}
+
+input {
+    color: black;
+    display : block;
+    width : 90%;
+    margin : 10px auto;
+    border : none;
+
+}
+
+form {
+    width : 500px;
+    margin : 0 auto;
+    /* border-color: black;
+    border-width: 2px;
+    border-style: solid; */
+    box-shadow: inset 2px 2px rgb(82, 92, 92);
+    background-color :rgb(181, 217, 217);
+    padding : 20px 0px;
+}

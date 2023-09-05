@@ -1,0 +1,57 @@
+.search-result{
+    position : relative;
+    text-align: right;
+    height: 100px;
+    margin : 20px 15px;
+    box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.5);
+    border-radius: 10px;
+    background-color: aliceblue;
+}
+
+.search-result .add-meal-button{
+    position : absolute;
+    bottom : 5px;
+    right : 5px;
+    z-index : 30;
+}
+
+.recipe-thumb{
+    position : absolute;
+    left : 20px;
+    z-index: 50;
+    box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.5)
+}
+
+.color-strip1, .color-strip2{
+    position : absolute;
+    left : 0px;
+    top : 20px;
+    width : 90%;
+    height : 60px;
+    z-index: 25;
+}
+
+.color-strip1{
+    background-color: rgb(151, 151, 251);
+}
+
+.color-strip2 {
+    background-color: rgb(62, 212, 209);
+}
+
+.recipe-label{
+    position : absolute;
+    right : 15px;
+    width : 50%;
+}
+
+.recipe-label button{
+    background: none;
+    border : none;
+}
+
+.recipe-label button:hover{
+    box-shadow: 7px 5px 7px rgb(16, 22, 90);
+    transform: translate(-5px, -5px);
+    cursor:pointer ;
+}

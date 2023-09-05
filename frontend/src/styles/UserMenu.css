@@ -1,0 +1,21 @@
+#user_menu {
+    position: absolute;
+    background: black;
+    font-size: 150%;
+    padding : 5px;
+    text-align: right;
+    z-index: 100; 
+}
+
+#user_menu p{
+    margin : 3px auto;
+}
+
+
+.noshow {
+    display: none;
+}
+
+.show {
+    display: block;
+}

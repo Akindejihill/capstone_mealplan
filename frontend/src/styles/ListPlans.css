@@ -1,0 +1,45 @@
+.plan-list{
+    background-color: aliceblue;
+    border: thick double #32a1ce;
+    width : auto;
+    max-width: 500px;
+    display: inline-block;
+    padding : 10px 0;
+}
+
+.plan-list h3{
+    background-color: #32a1ce;
+    padding: 0 15px;
+    margin : 5px 0;
+}
+
+.plan-list a:visited , .plan-list a{
+    color :#1b5870
+}
+
+.plan-list a:hover{
+    color :#32a1ce
+}
+
+.plan-list ul{
+    list-style-type : none;
+    text-align: left;
+    margin-bottom : 5px;
+    margin-right : 10px;
+}
+
+.plan-list li{
+    font-size: 16px;
+    font-weight: bold;
+    margin: 0px 0;
+}
+
+.plan-list li li{
+    font-size: 12px;
+    font-weight: normal;
+}
+
+.plan-list button{
+    margin : 0px auto;
+    color :#1b5870
+}

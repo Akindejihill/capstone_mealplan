@@ -1,0 +1,118 @@
+Goal and scope:
+===================
+The goal is to create a mealplan calendar application that will allow a user to select meals from the amazing Edamam food database.  Users will be able to select meals by dietary restrictions to fit their lifestyle.  Users will be able to display and print out a shopping list containing the items they need to complete the recipes as well as cooking instructions.
+
+
+Requirements:
+===================
+These are the requirements for the barebones features that will be completed for this project.  
+This project will require both a backend infrastructure and a frontend.  
+
+On the back end:
+* The backend will store account and authentication information
+    (*done*) Routes are /auth to login and /users (post) to register
+* The backend database will store the calendar information.  
+It will somehow associate meals from the API with calendar dates.  
+    (*done*) Creating a new mealplan /plan  (post)
+    (*done*) route to retrieve a list of meal plans
+    (*done*) retrieving meal plan details. /plan (get)  Recieves plan id, send back plan information and preferences
+    (*done*) Adding a meal event to the calendar /meals (post)
+    (*done*) retrieving info for one meal event /meals (get)
+    (*done*) Retrieve mealplan calendar info /meals/calendar (get)  Recieves a planid and a date range.  
+        Sends back an array of dates, each containing an array of meal events for each day which 
+        include just the meal title, image, and mealID (mealevents) 
+
+    (*done*) The backend will provide a shopping list for whatever time period in the future the user is shopping for, to be displayed by the frontend.
+        /shoppinglist (get)  Recieves a date range, sends back an array of items along with quantities.
+
+    (*done*) Route to get user profile
+    (*done*) Edit user profile
+    (*done*) Edit an existing plan
+    (*Done*) Edit an existing meal
+
+    (*done*) searching for a list of recipes /recipes (get)
+
+On the front end:
+(*done*) page for creating a meal plan
+(*done*) page for viewing and editing a meal plan
+(*done*) page or section for viewing a list of user's meal plans
+* page for searching for recipes and selecting choises
+* page for viewing and editing meal events
+    -will include a list if ingredients and link to instructions
+* page to render a calendar of meal events
+    -will have input for dates, and show shopping list
+
+- Displaying and editing meal plans will be on the same page.  Meal plan options will
+    be displayed inside of input widgets which will be formated using CSS to look like
+    regular text in display mode, and switch to a form when in edit mode.
+- The front end will send requests to the API for meal recomendations.  When a meal is chosen the backend is notified of the meal and time that it will be scheduled.   
+- The front end will provide a link to preparation instructions
+* The front end will print out or display a shoping list for whatever time period in the future the user is shopping for.
+
+
+
+Nice to have features:
+==========================
+in addition to the basic requirements.  Some of these features may be included in the initial release if there is time, and the rest may be worked on to improve the application in the future.  Others might be dropped.
+
+
+
+RoadMap
+===============
+Wed     Jul 19th -  Initial database design
+Thursd  jul 20th -  Integrate API calls with Database design
+Friday  Jul 21th -  Implement database design and Axios calls
+Monday  Jul 24th -  Integrate Express backend, database, and Axios API calls
+Tuesda  Jul 25th -  Testing and tweeking backend
+Wednes  Jul 26th -  Initial Frontend design, review the backend restfull API.
+...
+Tuesda  Aug 1st -   Mature Frontend design
+Wednes  Aug 2nd -   Review Frontend with Jason.    
+
+
+
+
+
+Questions
+-----------------------------
+
+* How am I going to keep track of calendar events?  A calendar for each user, or a single calendar for everyone?
+
+*How is a calendar represented in the database?  
+    -A table for each calendar? nope, that's .. I don't even know how to do that and sounds expensive
+    -One caledar table where each entry contains the event and user information? Maybe but seems like really long records with too many fields.
+    -Better yet each entry could contain only the meal info, meal label (breafast, lunch, tea ,etc) date-time info, and a calendar_id for 
+        the calendar the event belongs to.  That way users could even have more than one callendar in the future.  
+         Events => belong to a Calendar => belong to a user.
+
+* Should I associate dietary restrictions with the user or the calendar?  For isntanse, what if a mom needs 
+    different calendars for childen with different food allergies or preferences.  We would want to search for meals
+    for each calendar using different preferences, rather than using one set of preferences for the user.  Yes!  But instead of
+    calling them calendars I'll call them "plans".
+
+* What's going to be in the callendar?
+    - the meal
+    - the meal time and date
+    
+
+* How do I keep track of the ingredients and make shopping lists for a limited time range?
+    There will be an Ingredient table which is associated to the meal table, one to many.  
+    The shopping list will query for ingredients belonging to meals with a serving date
+    within a cartain range.  Then it will look for duplicate food_ids within those results 
+    and aggregate the amounts, creating a new colletion with each ingredient appearing only
+    once, with the total amount needed. 
+
+
+* Where do I include dietary restrictions in the database, if at all?  
+There can be any number of dietary preferences for any number of users, 
+so we could require an association table, "plan_diet_preferences" which associates
+each individual dietary option with a plan.  
+or
+The Plan table can have fields for "health", "diet" and "Cautions", which each contain an
+array of tags for their relavent issues.  for instance a health field could contain
+["Peanut-Free", "Tree-Nut-Free", "Alcohol-Free"], and the diet field could 
+contain ["Low-Carb", "Balanced"].  
+
+I'm going with the latter strategy.  I won't have to know in advance all of the 
+preference tags, and I don't need to worry about an association table for two different
+categories of preferences (diet and health).

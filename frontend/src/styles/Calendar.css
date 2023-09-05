@@ -1,0 +1,137 @@
+#calendar-area{
+    border: thick double #32a1ce;
+    text-align: left;
+    border-radius: 10px;
+    overflow-x:hidden;
+}
+
+.calendar-header{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    background-color :#66d1fc40  ;
+    line-height: 1;
+}
+
+.date-select{
+    /* text-align: left; */
+}
+
+.date-select > form{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    background-color :#66d1fc40  ;
+    line-height: 1;
+    padding : 5px;
+}
+
+.date-select span{
+    align-self : end ;
+}
+
+#date-submit{
+    width : auto;
+    display : inline;
+}
+
+.date-select .date-input{
+    width : auto;
+    display : inline-block;
+}
+
+
+.min-max-button{
+    justify-self: right;
+}
+
+
+.day-label{
+
+}
+
+.calendar, #calendar-area{
+    margin : 0 0;
+    padding: 0 0;
+}
+
+#calendar-area{
+    z-index: 100;
+    line-height: 0px;
+    margin-top: 20px; 
+}
+
+.calendar{
+    overflow-y: scroll;
+}
+
+.day, .day-label{
+    display : inline-block;
+    width : 13%;
+    border: solid;
+    margin : 0 0;
+    line-height: 1;
+}
+
+.day{
+    background-color: #9ff5ff;
+    overflow-y: scroll;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+
+.day::-webkit-scrollbar {
+    display: none;
+  }
+
+.day-label{
+    overflow: hidden;
+}
+
+.maximized .day{
+    height: 200px;
+}
+
+.window .day{
+   height: 100px;
+}
+
+
+.day-label{
+    text-align: center;
+    background-color: #32a1ce;
+    font-size: 70%;
+}
+
+.blank{
+    background-color: aliceblue;
+}
+
+.day-meal{
+    font-size: 50%;
+}
+
+
+.maximized{
+    display :block ;
+    position : absolute;
+    width : 800px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: aliceblue;
+    font-size: 26px;
+    max-height: 100vh;
+    filter: drop-shadow(10px 6px 6px #21216a);
+}
+
+.window{
+    background-color: aliceblue;
+    display: inline-block;
+    width : 400px; 
+    display: inline-block;
+    font-size: 14px;
+}
+
+.shopping-list li{
+    margin : 1px;
+    line-height: 1;
+}

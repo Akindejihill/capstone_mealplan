@@ -1,0 +1,98 @@
+.recipe-image{
+    margin-bottom: -5px;
+}
+
+.prep-button{
+    width : 100%;
+    margin-top: -5px;
+    padding : 5px;
+}
+
+.recipe-container{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    font-size: 18px;
+}
+
+.recipe-caption{
+    width : 300px;
+    background-color: blue;
+    /* position : absolute; */
+    margin : 10px;
+    border: solid rgb(37, 37, 48);
+    overflow-x: hidden;
+}
+
+.recipe-warnings{
+    width : 300px;
+    border : solid rgb(37, 37, 48);
+    margin : 10px;
+    text-align: left;
+    font-size: 14px;
+}
+
+.recipe-warnings > .caution-tag {
+    display : inline-block;
+    background-color: rgb(255, 188, 173);
+    border-radius: 5px;
+    margin : 2px;
+}
+
+.cautions-label{
+    background-color: rgb(194, 5, 5);
+}
+
+.recipe-column-1{
+
+}
+
+.health-diet-lables{
+    border : solid rgb(37, 37, 48);
+    margin : 10px;
+    text-align: left;
+    padding : 10px;
+    padding-top: 0;
+}
+
+.health-label, .diet-label{
+    display : inline-block;
+    border-radius: 5px;
+    margin : 2px 4px;
+}
+
+.health-label{
+    background-color: rgb(103, 200, 124);
+}
+
+.diet-label{
+    background-color: rgb(107, 170, 253);
+}
+
+.health-heading, .diet-heading{
+    background-color: antiquewhite;
+    text-align: center;
+    margin: 0;
+    margin-top : 10px;
+}
+
+.recipe-column-2{
+    display: grid;
+    grid-template-rows: auto;
+}
+
+.recipe-column-2 .ingredients{
+    border : solid rgb(37, 37, 48);
+    margin : 10px;
+}
+
+.nutrition h4, .ingredients h4{
+    text-align: center;
+}
+
+.nutrition{
+    text-align: left;
+}
+
+.ingredients{
+    text-align: left;
+}

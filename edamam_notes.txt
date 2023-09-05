@@ -1,0 +1,158 @@
+Images sent through the API are only good for a little while then expire.
+
+
+Each ingredient has a foodId, which I don't know how to access individually
+
+ex, foodId:"food_bk9p9aaavhvoq4bqsnprobpsiuxs"  I failed to even look it up in their own
+nutrients api.
+
+I need to store the ingrediants and amounts in such a way that allows us to Figure
+out which ingredients to buy and how much, at the time that we compile the shoping list.
+So we can just dump all the ingredients and amounts into one big table, they have to be
+associated with meals.
+
+
+
+
+
+
+I would like to add up the total daily intake of nutrients, and include 
+a prefered min and max in each plan.  If the daily intake isn'a within range
+a warning can be displayed.  
+
+
+
+Results:
+When I look up "Chicken parm"  res.data will contain
+q :         the search string
+from :      an integer, the result number the list starts with
+to :        an integer, the result number the list ends with
+more :      boolean, whether or not there are more pages of Results
+count :     how many results there are.
+hits :      A list of the (10) results on on the current page
+    [0] Each "hit" is can be selected by its index number and 
+        contains an object "recipe" which is contains the following.
+
+        uri :           Don't know what this is
+        label :         The name of the dish
+        image :         A generated url to a picture of the dish that expires after short time
+        source :        where credit where recipie came from.
+        url :           a link to the source.  This is where to go for prep instructions
+        yield :         How many people it serves
+        dietLabels :    Which dietary plans the recipe conforms to
+        healthLabels :  Alergy and lifestyle labels eg. Peanut-Free
+        cautions:       Any ingrediants that could pose a danger to some people
+        ingredientLines : An array with one ingredient and measure per element, ex. "1 tablespoon oil"
+        calories :      total calories
+        totalWeight :   total weight in grams
+        totalTime :     preparation time
+        cuisineType :   An array of cuisine labels ex. "mediterraniean"
+        mealType :      An array of meal type lables like "lunch" "dinner"
+        dishType :      An array of lables for dish type like "main course"
+        totalNutrients :An object containing nutrient objects containing details for each nutrient.
+        
+        ingredients :   : An array with one ingredient object per element.  Objects hold the following details
+            text :          the same description and measure as the ingredientLines
+            weight :        an integer in grams (I believe)
+            foodCategory :  category of food ex "Oils"
+            foodID :        The unique ID of the ingrediant item in their database, which I have been unable to do anything useful with.
+            image :         time expired URL of an image of the ingredient.  
+
+        digest :        Array of nutrient information, again.
+            [0]
+                label : name of nutrient ex. "Fat"
+                tag :   name of nutrient ex. Fat
+                schemaOrgTag : ex "fatContent"
+                hasRDI : boolean
+                daily :  percentage of recmended daily allowance (for total meanl, not per serving)
+                unit : measurment ex "g"
+
+Additonal parameters are "from" and "to".  Can not request more than 100 results, 
+otherwise you get an error.  In fact there is a bug that doens't send any results
+beyond 100, even if you ask for less than 100 results.  For example searching for 
+"q : chicken parm, from : 90, to : 120".  you  would only get 10 results back even 
+though it reported 179 total results for "chicken parm".
+
+ex.
+    const data={
+      q : search,
+      from : 0,
+      to : 100,
+    };
+
+
+
+Questions:
+
+I'm confused about the difference between the totalNutrients and the digest.  It seems like it's 
+the same information.  why?
+
+
+Plan:
+With this info I can download records and filter them by calories per serving (or per yield), dietLabels, healthLabels, and cautions.  
+Then present the selections in a list.  The selected option gets added to the 'meal' table
+along with a time and date.
+
+
+
+
+DietLabels:
+
+    "balanced"
+    "high-fiber"
+    "high-protein"
+    "low-fat"
+    "low-carb"
+    "low-sodium
+
+
+
+healthLabels:
+    "alcohol-cocktail"
+    "alcohol-free"
+    "celery-free"
+    "crustacean-free"
+    "dairy-free"
+    "DASH"              lowers sodium intake
+    "egg-free"
+    "fish-free"
+    "fodmap-free"       for IBS
+    "gluten-free"
+    "immuno-supportive"
+    "keto-friendly"
+    "kidney-friendly"
+    "kosher"
+    "low-fat-abs"
+    "low-potassium"
+    "low-sugar"
+    "lupine-free"
+    "Mediterranean"
+    "mollusk-free"
+    "mustard-free"
+    "no-oil-added"
+    "paleo"
+    "peanut-free"
+    "pescatarian"
+    "pork-free"
+    "red-meat-free"
+    "sesame-free"
+    "shellfish-free"
+    "soy-free"
+    "sugar-conscious"
+    "sulfite-free"
+    "tree-nut-free"
+    "vegan"
+    "vegetarian"
+    "wheat-free"
+
+   
+Cautions:
+    "Sulfites"
+    "FODMAP"
+    "Gluten"
+    "Wheat"
+    "Tree-Nuts"
+
+
+
+
