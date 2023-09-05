@@ -15,6 +15,7 @@ app.use(cors({
   origin: origin
 }));
 
+
 app.use(JWTAuth);
 
 app.use("/api/users", userRouter);

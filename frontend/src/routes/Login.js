@@ -1,6 +1,6 @@
 import '../styles/Register.css';
 import {useState} from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import { MPApi } from '../api';
 
 const Login = ({updateUser}) => { 
@@ -36,7 +36,7 @@ const Login = ({updateUser}) => {
             setWarningVisible(true);
         } else if (user){
             updateUser(user);
-            navigate('/');
+            navigate('/mealplan');
         }
     }
 
@@ -49,7 +49,7 @@ const Login = ({updateUser}) => {
                 <input value={formData.password} name="password" id="password" placeholder="password" type="password" onChange={handleChange}/>
                 <button onClick={handleSubmit}>Login</button>
             </form>
-            <p>or <a href="./register">register</a> a new account</p>
+            <p>or <Link to={'/mealplan/register'}>register</Link> a new account</p>
             {warningVisible && <div className="auth_failure">Authentication failed.  Please try again</div>}
         </div>
     );

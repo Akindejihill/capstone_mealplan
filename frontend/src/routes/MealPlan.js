@@ -102,7 +102,7 @@ const MealPlan = () => {
     async function handleDelete(evt){
         const [success, error] = await MPApi.deleteMealPlan(planID);
         if (success){
-            navigate("/profile");
+            navigate("/mealplan/profile");
         }
         //TODO, rework the error display for use with multiple error sources
     }
@@ -155,7 +155,7 @@ const MealPlan = () => {
             setError(error);
         } else {
             alert("saved");
-            navigate(`/plan/${planid}`);
+            navigate(`/mealplan/plan/${planid}`);
         }
     }
 

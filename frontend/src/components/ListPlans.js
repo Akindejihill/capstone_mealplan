@@ -45,7 +45,7 @@ const ListPlans = () => {
             <ul>
                 {
                     //display a pair of list items for each plan in the list
-                    list.map(plan => <li key={plan.id}><a href={`/plan/${plan.id}`}>{plan.label}</a>
+                    list.map(plan => <li key={plan.id}><a href={`/mealplan/plan/${plan.id}`}>{plan.label}</a>
                                         <ul>
                                             <li>{plan.description}</li>
                                         </ul>

@@ -1,6 +1,6 @@
 export default function Attribution(){
     return (
-        <div>
+        <div className="story">
             <h1>Attributions</h1>
             <p><a href="https://www.rithmschool.com/">Rithm School's</a> bootcamps in conjunction with USF</p>
             <p><a href="https://usfbootcamps.com/">USF Software Engineering Bootcamp </a> in conjunction with the Rithm School</p>

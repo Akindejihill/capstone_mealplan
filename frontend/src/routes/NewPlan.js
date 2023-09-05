@@ -81,7 +81,7 @@ const NewPlan = () =>{
             setWarningVisible(true);
             setError(error);
         } else {
-            navigate(`/plan/${planID}`);
+            navigate(`/mealplan/plan/${planID}`);
         }
     }
 

@@ -37,7 +37,7 @@ const Register = ({updateUser}) => {
         } else {
             console.log("user id: ", profile.userid);
             updateUser(profile);
-            navigate('/profile');
+            navigate('/mealplan/profile');
         }
     }
 

@@ -28,3 +28,14 @@ h3 {
 h4 {
   font-size: 20px;
 }
+
+.story{ 
+  max-width : 800px;
+  text-align: left;
+  margin: 0 auto;
+  font-size: 20px;
+}
+
+.story h1{
+  text-align: center;
+}

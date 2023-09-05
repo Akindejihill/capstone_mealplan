@@ -1,13 +1,13 @@
 export default function About(){
     return(
-        <div>
+        <div className="story">
             <h1>About this project</h1>
             <p>
                 In college I was great at databases, but not so great at coding.
                 Back in those days creating webpages with HTML was called "scripting".
-                Even Java-Script back then was considered only scripting -the equivalent
+                Even JavaScript back then was considered only scripting -the equivalent
                 to creating .bat files or other scripts for your operating system.
-                It was limited and had no libraries for connected to databases or anything
+                It was limited and had no libraries for connecting to databases or anything
                 beyond dynamically changing the color of text.  I used to dream of creating
                 a grocery list, inventory, and recipe database, but I was limited to using
                 what I knew back then, MS Access, which was great for small single user
