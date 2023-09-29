@@ -2,6 +2,7 @@ export default function Attribution(){
     return (
         <div className="story">
             <h1>Attributions</h1>
+            <p>Thanks to Jason Shelley, my mentor from the Rithm School</p>
             <p><a href="https://www.rithmschool.com/">Rithm School's</a> bootcamps in conjunction with USF</p>
             <p><a href="https://usfbootcamps.com/">USF Software Engineering Bootcamp </a> in conjunction with the Rithm School</p>
             <p>This project is powered by <a href="https://www.edamam.com/">Edamam's food APIs</a></p>

@@ -53,7 +53,7 @@ const ListPlans = () => {
                 }
             </ul>
             {
-                user ? <a href="/addPlan"><button>Add new plan</button></a> : ""
+                user ? <a href="/mealplan/addPlan"><button>Add new plan</button></a> : ""
             }
             
         </section>

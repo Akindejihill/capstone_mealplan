@@ -242,108 +242,108 @@ export class MPApi {
 
     static async addMealEvent(date, time, selectedMeal, planID){
 
-        /**Why I'm using mock_ingredients...
-         * I coded the backend application 
-         * to expect data based on Edamam documentation 
-         * and demo, however I'm using a version of their
-         * API provided  by a host called RapidAPI and the 
-         * data that actually comes back is different than what
-         * is specified in the documentation or displayed in
-         * in the demo.  I have tried to connect to the 
-         * endpoint on the acrual edamam website but I'm 
-         * having trouble with that. I will either get
-         * everything resolved through edamam support or I
-         * will recode the backend to use the less than
-         * desireable data that I'm getting back from RapidAPI.
-         * Until then I will have to use this mock ingredient
-         * data. 
-         */
-        const mock_ingredients = [
-            {
-                "description": "1 tablespoon oil",
-                "quantity": 1,
-                "measure": "tablespoon",
-                "food": "oil",
-                "weight": 14
-        },
-            {
-                "description": "1 1/2 cup panko",
-                "quantity": 1.5,
-                "measure": "cup",
-                "food": "panko",
-                "weight": 90
-        },
-            {
-                "description": "1/2 cup grated parmesan cheese",
-                "quantity": 0.5,
-                "measure": "cup",
-                "food": "parmesan cheese",
-                "weight": 74.353125
-         },
-             {
-                "description": "1/4 teaspoon salt",
-                "quantity": 0.25,
-                "measure": "teaspoon",
-                "food": "salt",
-                "weight": 1.5
-             },
-             {
-                "description": "1/4 teaspoon ground black pepper",
-                "quantity": 0.25,
-                "measure": "teaspoon",
-                "food": "black pepper",
-                "weight": 0.575
-         },
-             {
-                "description": "1/8 teaspoon garlic powder",
-                "quantity": 0.125,
-                "measure": "teaspoon",
-                "food": "garlic powder",
-                "weight": 0.3875
-         },
-             {
-                "description": "1 teaspoon dried italian seasoning",
-                "quantity": 1,
-                "measure": "teaspoon",
-                "food": "italian seasoning",
-                "weight": 1
-         },
-             {
-                "description": "2 large eggs",
-                "quantity": 2,
-                "measure": "<unit>",
-                "food": "eggs",
-                "weight": 100
-         },
-             {
-                "description": "2 large boneless, skinless chicken breast halves",
-                "quantity": 2,
-                "measure": "half",
-                "food": "boneless, skinless chicken breast",
-                "weight": 217.5
-         },
-             {
-                "description": "1/2 cup grated sharp cheddar cheese or grated mozzarella cheese",
-                "quantity": 0.5,
-                "measure": "cup",
-                "food": "cheddar cheese",
-                "weight": 66
-         },
-             {
-                "description": "2 cups purchased marinara sauce",
-                "quantity": 2,
-                "measure": "cup",
-                "food": "marinara sauce",
-                "weight": 528
-         },
-             {
-                "description": "4 servings angel hair pasta, prepared according to package instructions",
-                "quantity": 4,
-                "measure": "serving",
-                "food": "angel hair pasta",
-                "weight": 1200
-         }
-        ];
+        // /**Why I'm using mock_ingredients...
+        //  * I coded the backend application 
+        //  * to expect data based on Edamam documentation 
+        //  * and demo, however I'm using a version of their
+        //  * API provided  by a host called RapidAPI and the 
+        //  * data that actually comes back is different than what
+        //  * is specified in the documentation or displayed in
+        //  * in the demo.  I have tried to connect to the 
+        //  * endpoint on the acrual edamam website but I'm 
+        //  * having trouble with that. I will either get
+        //  * everything resolved through edamam support or I
+        //  * will recode the backend to use the less than
+        //  * desireable data that I'm getting back from RapidAPI.
+        //  * Until then I will have to use this mock ingredient
+        //  * data. 
+        //  */
+        // const mock_ingredients = [
+        //     {
+        //         "description": "1 tablespoon oil",
+        //         "quantity": 1,
+        //         "measure": "tablespoon",
+        //         "food": "oil",
+        //         "weight": 14
+        // },
+        //     {
+        //         "description": "1 1/2 cup panko",
+        //         "quantity": 1.5,
+        //         "measure": "cup",
+        //         "food": "panko",
+        //         "weight": 90
+        // },
+        //     {
+        //         "description": "1/2 cup grated parmesan cheese",
+        //         "quantity": 0.5,
+        //         "measure": "cup",
+        //         "food": "parmesan cheese",
+        //         "weight": 74.353125
+        //  },
+        //      {
+        //         "description": "1/4 teaspoon salt",
+        //         "quantity": 0.25,
+        //         "measure": "teaspoon",
+        //         "food": "salt",
+        //         "weight": 1.5
+        //      },
+        //      {
+        //         "description": "1/4 teaspoon ground black pepper",
+        //         "quantity": 0.25,
+        //         "measure": "teaspoon",
+        //         "food": "black pepper",
+        //         "weight": 0.575
+        //  },
+        //      {
+        //         "description": "1/8 teaspoon garlic powder",
+        //         "quantity": 0.125,
+        //         "measure": "teaspoon",
+        //         "food": "garlic powder",
+        //         "weight": 0.3875
+        //  },
+        //      {
+        //         "description": "1 teaspoon dried italian seasoning",
+        //         "quantity": 1,
+        //         "measure": "teaspoon",
+        //         "food": "italian seasoning",
+        //         "weight": 1
+        //  },
+        //      {
+        //         "description": "2 large eggs",
+        //         "quantity": 2,
+        //         "measure": "<unit>",
+        //         "food": "eggs",
+        //         "weight": 100
+        //  },
+        //      {
+        //         "description": "2 large boneless, skinless chicken breast halves",
+        //         "quantity": 2,
+        //         "measure": "half",
+        //         "food": "boneless, skinless chicken breast",
+        //         "weight": 217.5
+        //  },
+        //      {
+        //         "description": "1/2 cup grated sharp cheddar cheese or grated mozzarella cheese",
+        //         "quantity": 0.5,
+        //         "measure": "cup",
+        //         "food": "cheddar cheese",
+        //         "weight": 66
+        //  },
+        //      {
+        //         "description": "2 cups purchased marinara sauce",
+        //         "quantity": 2,
+        //         "measure": "cup",
+        //         "food": "marinara sauce",
+        //         "weight": 528
+        //  },
+        //      {
+        //         "description": "4 servings angel hair pasta, prepared according to package instructions",
+        //         "quantity": 4,
+        //         "measure": "serving",
+        //         "food": "angel hair pasta",
+        //         "weight": 1200
+        //  }
+        // ];
 
         const data ={
             "planid" : planID,
