@@ -45,7 +45,7 @@ const ListPlans = () => {
             <ul>
                 {
                     //display a pair of list items for each plan in the list
-                    list.map(plan => <li key={plan.id}><a href={`/mealplan/plan/${plan.id}`}>{plan.label}</a>
+                    list.map(plan => <li key={plan.id}><a href={`/plan/${plan.id}`}>{plan.label}</a>
                                         <ul>
                                             <li>{plan.description}</li>
                                         </ul>
@@ -53,7 +53,7 @@ const ListPlans = () => {
                 }
             </ul>
             {
-                user ? <a href="/mealplan/addPlan"><button>Add new plan</button></a> : ""
+                user ? <a href="/addPlan"><button>Add new plan</button></a> : ""
             }
             
         </section>

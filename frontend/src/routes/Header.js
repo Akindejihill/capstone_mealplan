@@ -14,7 +14,7 @@ function Header({user, updateUser}) {
     let name = null;
     //basic user widget for log out user
     let userButton = (
-        <Link to={'/mealplan/login'}>
+        <Link to={'/login'}>
             login / register
         </Link>
     );
@@ -47,17 +47,17 @@ function Header({user, updateUser}) {
         <header className="App-header">
             <img src={logo} className="App-logo" alt="logo" />
             <span className="navLink">
-                <Link to={'/mealplan'}>
+                <Link to={'/'}>
                     Home
                 </Link>
             </span>
             <span className="navLink">
-                <Link to={'/mealplan/about'}>
+                <Link to={'/about'}>
                     About
                 </Link>
             </span>
             <span className="navLink">
-                <Link to={'/mealplan/attribution'}>
+                <Link to={'/attribution'}>
                     Attribution
                 </Link>
             </span>

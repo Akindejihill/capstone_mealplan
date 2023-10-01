@@ -45,16 +45,16 @@ function App(){
     return (
         <BrowserRouter>    
             <Routes>
-                <Route path='/mealplan' element={<SharedLayout user={user} updateUser={updateUser}/>}>
+                <Route path='/' element={<SharedLayout user={user} updateUser={updateUser}/>}>
                     <Route index element={<Home user={user}/>} />
                     <Route path='login' element={<Login updateUser={updateUser}/>} />
-                    <Route path='/mealplan/register' element={<Register updateUser={updateUser} />} />
+                    <Route path='register' element={<Register updateUser={updateUser} />} />
                     <Route path='profile' element={<Profile updateUser={updateUser}/>} />
                     <Route path='addPlan' element={<NewPlan />} />
                     <Route path='plan/:planID' element={<MealPlan />} />
                     <Route path='attribution' element={<Attribution />} />
                     <Route path='plan/meal/:mealID' element={<MealEvent />} />
-                    <Route path='/mealplan/about' element={<About />} />
+                    <Route path='about' element={<About />} />
                 </Route>
                 <Route path='*' element={<h1>Not found.</h1> } />
             </Routes>

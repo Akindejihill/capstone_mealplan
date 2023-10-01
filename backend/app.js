@@ -9,12 +9,13 @@ const mealRouter = require('./routes/mealRoutes');
 const {origin} = require("./config");
 const {JWTAuth} = require('./middleware/JWTAuth');
 
-app.use(express.json());
-
 app.use(cors({
   origin: origin
 }));
 
+app.use(express.static('public'));
+
+app.use(express.json());
 
 app.use(JWTAuth);
 
@@ -23,33 +24,29 @@ app.use("/api/plan", planRouter);
 app.use("/api/meals", mealRouter);
 
 
-app.get('/', function(request, response){
-  return response.send('Hi.');
-});
+// app.get('/', function(request, response){
+//   return response.send('Hi.');
+// });
 
 //see interactive results https://rapidapi.com/edamam/api/edamam-food-and-grocery-database
-app.get('/test-item', async function(request, response){
-  const item = await FoodAPI.testItem("apple");
-  console.log(item);
-  return response.send(`The response text is: ${item}`);
-});
-
-//see interactive results at https://rapidapi.com/edamam/api/recipe-search-and-diet
-app.get('/test-search', async function(request, response){
-  const recipe = await FoodAPI.testRecipeSearch("Chicken parm");
-  console.log(recipe);
-  return response.send(`<h1>Results:</h1><ul> ${recipe} </ul>`);
-});
-
-app.get('/test-recipe', async function(request, response){
-  const recipe = await FoodAPI.testGetRecipe("http://www.edamam.com/ontologies/edamam.owl#recipe_ed04ad9d33c494f13f6406d53a6de34e");
-  console.log(recipe);
-  return response.send(`<h1>Results:</h1><ul> ${recipe} </ul>`);
-});
-
-
-
-
+// app.get('/test-item', async function(request, response){
+//   const item = await FoodAPI.testItem("apple");
+//   console.log(item);
+//   return response.send(`The response text is: ${item}`);
+// });
+//
+// //see interactive results at https://rapidapi.com/edamam/api/recipe-search-and-diet
+// app.get('/test-search', async function(request, response){
+//   const recipe = await FoodAPI.testRecipeSearch("Chicken parm");
+//   console.log(recipe);
+//   return response.send(`<h1>Results:</h1><ul> ${recipe} </ul>`);
+// });
+//
+// app.get('/test-recipe', async function(request, response){
+//   const recipe = await FoodAPI.testGetRecipe("http://www.edamam.com/ontologies/edamam.owl#recipe_ed04ad9d33c494f13f6406d53a6de34e");
+//   console.log(recipe);
+//   return response.send(`<h1>Results:</h1><ul> ${recipe} </ul>`);
+// });
 
 
 
