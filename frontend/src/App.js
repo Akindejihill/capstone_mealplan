@@ -43,7 +43,7 @@ function App(){
 
 
     return (
-        <BrowserRouter>    
+        <BrowserRouter basename="/mealplan">
             <Routes>
                 <Route path='/' element={<SharedLayout user={user} updateUser={updateUser}/>}>
                     <Route index element={<Home user={user}/>} />

@@ -1,4 +1,4 @@
-import { useNavigate, redirect, useParams } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import {useState, useEffect} from 'react';
 import { MPApi } from '../api';
 import '../styles/ListPlans.css';
@@ -45,7 +45,7 @@ const ListPlans = () => {
             <ul>
                 {
                     //display a pair of list items for each plan in the list
-                    list.map(plan => <li key={plan.id}><a href={`/plan/${plan.id}`}>{plan.label}</a>
+                    list.map(plan => <li key={plan.id}><Link to={`/plan/${plan.id}`}>{plan.label}</Link>
                                         <ul>
                                             <li>{plan.description}</li>
                                         </ul>
@@ -53,7 +53,7 @@ const ListPlans = () => {
                 }
             </ul>
             {
-                user ? <a href="/addPlan"><button>Add new plan</button></a> : ""
+                user ? <Link to={"/addPlan"}><button>Add new plan</button></Link> : ""
             }
             
         </section>

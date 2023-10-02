@@ -5,7 +5,6 @@ const app = express();
 const userRouter = require('./routes/userRoutes');
 const planRouter = require('./routes/planRoutes');
 const mealRouter = require('./routes/mealRoutes');
-//const router = require('./routes'); //this has been refactored into the 3 above
 const {origin} = require("./config");
 const {JWTAuth} = require('./middleware/JWTAuth');
 
@@ -13,7 +12,7 @@ app.use(cors({
   origin: origin
 }));
 
-app.use(express.static('public'));
+//app.use(express.static('public'));
 
 app.use(express.json());
 

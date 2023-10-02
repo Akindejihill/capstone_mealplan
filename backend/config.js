@@ -10,7 +10,7 @@ const SECRET_KEY = process.env.SECRET_KEY || "not so secret";
 
 const BCRYPT_WORK_FACTOR = 12;
 
-const origin = ['http://cerebro:3000', 'http://mealplan.cerebro.homelinux.net'];
+const origin = ['http://cerebro:3000', 'http://mealplan.cerebro.homelinux.net', 'http://cerebro.homelinux.net'];
 
 module.exports = {
     DB_URI, SECRET_KEY, BCRYPT_WORK_FACTOR, origin
