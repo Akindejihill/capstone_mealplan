@@ -18,7 +18,7 @@ const UserMenu = ({uMVisibility, toggleUserMenu, updateUser}) => {
     return (
         <div id="user_menu" className={uMVisibility} onBlur={toggleUserMenu}>
             <p><a onClick={logout}>logout</a></p>
-            <p><a href="/mealplan/profile">profile</a></p>
+            <p><Link to={"/profile"}>profile</Link></p>
         </div> 
     )
 }

@@ -65,7 +65,7 @@ const Profile = ({updateUser}) => {
         } else {
             console.log("user id: ", profile.userid);
             updateUser(profile);
-            navigate('/mealplan');
+            navigate('/');
         }
     }
 
