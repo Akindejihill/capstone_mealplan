@@ -40,7 +40,7 @@ const ListPlans = () => {
 
 
     return (
-        <section className="plan-list">
+        <div className="plan-list">
             <h3>Meal plans{user ? ` for ${user.first_name} ${user.last_name}!` : "!"}</h3>
             <ul>
                 {
@@ -53,10 +53,10 @@ const ListPlans = () => {
                 }
             </ul>
             {
-                user ? <Link to={"/addPlan"}><button>Add new plan</button></Link> : ""
+                user ? <Link to={"/addPlan"}><button className="btn btn-secondary">Add new plan</button></Link> : ""
             }
             
-        </section>
+        </div>
     );
 
 }

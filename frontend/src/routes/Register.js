@@ -44,7 +44,7 @@ const Register = ({updateUser}) => {
 
     return (
         <div className="regpage">
-            <form onSubmit={handleSubmit}>
+            <form onSubmit={handleSubmit} className="register-form">
                 <label className="visually-hidden" htmlFor="username">user name</label>
                 <input value={formData.username} name="username" id="username" type="text" placeholder="username" onChange={handleChange}/>
                 <label className="visually-hidden" htmlFor="password">password</label>

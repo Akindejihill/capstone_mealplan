@@ -1,11 +1,15 @@
 .search-result{
+    display: flex;
+    flex-wrap: flex;
     position : relative;
-    text-align: right;
     height: 100px;
+    overflow: auto;
     margin : 20px 15px;
     box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.5);
     border-radius: 10px;
     background-color: aliceblue;
+    max-width: 370px;
+    width: auto;
 }
 
 .search-result .add-meal-button{
@@ -16,18 +20,18 @@
 }
 
 .recipe-thumb{
-    position : absolute;
-    left : 20px;
+    position : relative;
+    /* left : 20px; */
     z-index: 50;
-    box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.5)
+    box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.5);
 }
 
 .color-strip1, .color-strip2{
-    position : absolute;
+    position : relative;
     left : 0px;
-    top : 20px;
+    top : 15px;
     width : 90%;
-    height : 60px;
+    height : 70px;
     z-index: 25;
 }
 
@@ -39,19 +43,28 @@
     background-color: rgb(62, 212, 209);
 }
 
-.recipe-label{
-    position : absolute;
-    right : 15px;
-    width : 50%;
-}
-
 .recipe-label button{
+    position : relative;
+    /* left : 120px; */
+    /* top: 15px; */
+    /* min-width : 100px; */
+    font-size: 16px;
+    top : 3px;
+    width : 100%;
+    height : 64px;
+    overflow :hidden;
     background: none;
     border : none;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+.search-result .empty{
+    width: 10%;
 }
 
 .recipe-label button:hover{
     box-shadow: 7px 5px 7px rgb(16, 22, 90);
-    transform: translate(-5px, -5px);
+    transform: translate(-3px, -3px);
     cursor:pointer ;
+    transition: transform 0.2s, box-shadow 0.2s;
+
 }

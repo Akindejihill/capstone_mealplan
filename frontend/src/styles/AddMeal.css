@@ -1,12 +1,16 @@
 .add-meal {
     background-color: rgba(81, 81, 242, 0.766);
     border-radius: 10px;
+    border: solid 12px rgb(181, 217, 217);
 }
 
 .add-meal h3 {
     margin : 0 0;
-    color : white;
-    text-shadow: 1px 1px 2px rgb(2, 2, 4), 0 0 1em blue, 0 0 0.2em blue;
+    color : rgb(38, 38, 38);
+    /* text-shadow: 1px 1px 2px rgb(2, 2, 4), 0 0 1em blue, 0 0 0.2em blue; */
+    background-color: rgb(181, 217, 217);
+    border-bottom-right-radius: 10px;
+    border-bottom-left-radius: 10px;
 }
 
 .meal-date, .meal-time {
@@ -21,11 +25,17 @@
 
 .form-meal-label {
     margin : 5px 0;
-    background-color: rgb(216, 235, 251);
+    background-color: rgb(181, 217, 217);
 }
 
 .validation_failure{
     color : rgb(224, 185, 185);
     font-weight: bold;
     text-shadow: 1px 1px 2px rgb(2, 2, 4), 0 0 1em blue, 0 0 0.2em blue;
+}
+
+.add-meal form{
+    border-bottom-right-radius: 0px;
+    border-bottom-left-radius: 0px;
+    box-shadow: none;
 }

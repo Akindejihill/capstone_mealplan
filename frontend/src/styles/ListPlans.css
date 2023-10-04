@@ -5,6 +5,7 @@
     max-width: 500px;
     display: inline-block;
     padding : 10px 0;
+    border-radius: 20px;
 }
 
 .plan-list h3{
@@ -41,5 +42,5 @@
 
 .plan-list button{
     margin : 0px auto;
-    color :#1b5870
+    color :#73c4e3
 }

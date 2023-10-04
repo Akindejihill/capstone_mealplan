@@ -6,27 +6,40 @@
     width : 100%;
     margin-top: -5px;
     padding : 5px;
+    text-wrap:balance;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.prep-button:hover{
+    box-shadow: inset 3px 5px 3px rgb(16, 22, 90);
+    transform: translate(-2px, 2px);
+    cursor:pointer ;
+    transition: transform 0.2s, box-shadow 0.2s;
 }
 
 .recipe-container{
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    font-size: 18px;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    /* grid-template-columns: 1fr 1fr; */
+    overflow: auto;
+    font-size: 1.1rem;
+    min-width : 410px;
+    width: auto;
 }
 
 .recipe-caption{
     width : 300px;
-    background-color: blue;
     /* position : absolute; */
-    margin : 10px;
+    margin : 10px auto;
     border: solid rgb(37, 37, 48);
-    overflow-x: hidden;
+    overflow: hidden;
 }
 
 .recipe-warnings{
     width : 300px;
     border : solid rgb(37, 37, 48);
-    margin : 10px;
+    margin : 10px auto;
     text-align: left;
     font-size: 14px;
 }
@@ -42,9 +55,6 @@
     background-color: rgb(194, 5, 5);
 }
 
-.recipe-column-1{
-
-}
 
 .health-diet-lables{
     border : solid rgb(37, 37, 48);
@@ -52,6 +62,8 @@
     text-align: left;
     padding : 10px;
     padding-top: 0;
+    width: auto;
+    max-width: 400px;         
 }
 
 .health-label, .diet-label{
@@ -74,6 +86,14 @@
     margin: 0;
     margin-top : 10px;
 }
+/* 
+.recipe-column-1{
+    display: flex;
+}
+
+.recipe-column-2{
+    display: flex;
+} */
 
 .recipe-column-2{
     display: grid;
@@ -95,4 +115,6 @@
 
 .ingredients{
     text-align: left;
+    min-width: 200px;
+    max-width: 400px;
 }

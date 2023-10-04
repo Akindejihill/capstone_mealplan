@@ -45,25 +45,31 @@ function Header({user, updateUser}) {
 
     return (
         <header className="App-header">
-            <img src={logo} className="App-logo" alt="logo" />
-            <span className="navLink">
-                <Link to={'/'}>
-                    Home
-                </Link>
+            <span className="start">
+                <img src={logo} className="App-logo" alt="logo" />
             </span>
-            <span className="navLink">
-                <Link to={'/about'}>
-                    About
-                </Link>
+            <span class="links"> 
+                <span className="navLink">
+                    <Link to={'/'} className="link">
+                        Home
+                    </Link>
+                </span>
+                <span className="navLink">
+                    <Link to={'/about'} className="link">
+                        About
+                    </Link>
+                </span>
+                <span className="navLink">
+                    <Link to={'/attribution'} className="link">
+                        Attribution
+                    </Link>
+                </span>
             </span>
-            <span className="navLink">
-                <Link to={'/attribution'}>
-                    Attribution
-                </Link>
-            </span>
-            <span className="navLink">
-                {userButton}
-                <UserMenu uMVisibility={uMVisibility} toggleUserMenu={toggleUserMenu} updateUser={updateUser}/>
+            <span className="end">
+                <span className="navLink menu">
+                    {userButton}
+                    <UserMenu uMVisibility={uMVisibility} toggleUserMenu={toggleUserMenu} updateUser={updateUser}/>
+                </span>
             </span>
          </header>
     )

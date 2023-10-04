@@ -14,13 +14,17 @@ function Home({user}) {
     return (
         <main>
             <h1>Hello{name}!</h1>
-            <div className="hero">
-                <p>As a stay at home dad my wife expects me to cook dinner even 
-                   though I also code morning noon and night.  I didn't know 
-                   what to make, so I made Meal Planner instead.  Maybe someday
-                   soon I'll cook dinner.<br/> - the Webmaster</p>
-            </div>
-            <ListPlans />
+            <section>
+                <div className="hero">
+                    <p className="text">As a stay at home dad my wife expects me to cook dinner even 
+                    though I also study and code morning noon and night.  I didn't know 
+                    what to make, so I made Meal Planner instead.  Maybe someday
+                    soon I'll cook dinner.
+                    </p>
+                    <p className="signature">- the Webmaster</p>
+                </div>
+                <ListPlans />
+            </section>
         </main>
 
     )

@@ -8,9 +8,16 @@ body {
   background-color: rgb(227, 227, 227);
 }
 
-code {
+/* code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+} */
+
+.btn-group-xs > .btn, .btn-xs {
+  padding: .25rem .4rem;
+  font-size: .875rem;
+  line-height: .5;
+  border-radius: .2rem;
 }
 
 h1 {
@@ -29,13 +36,12 @@ h4 {
   font-size: 20px;
 }
 
-.story{ 
-  max-width : 800px;
-  text-align: left;
-  margin: 0 auto;
-  font-size: 20px;
-}
-
-.story h1{
-  text-align: center;
+form {
+  width : auto;
+  margin : 0 auto;
+  box-shadow: inset 2px 2px rgb(82, 92, 92);
+  background-color :rgb(181, 217, 217);
+  padding : 20px 0px;
+  max-width: 100%;
+  border-radius: 20px;
 }

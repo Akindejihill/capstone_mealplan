@@ -82,7 +82,10 @@ export default function Calendar({startDate, endDate, setStartDate, setEndDate, 
     return (
         <div id="calendar-area" className={maxClass}>
             <div className="calendar-header">
-                <span><button value="calendar" onClick={changeDisplay}>Calendar</button><button value="shoppinglist" onClick={changeDisplay}>Shopping List</button></span><span className="min-max-button"><button onClick={handleMax}>{maximized ? "-": "+" }</button></span>
+                <span><button className="btn btn-secondary btn-xs" value="calendar" onClick={changeDisplay}>Calendar</button>
+                <button className="btn btn-secondary btn-xs shoppinglist" value="shoppinglist" onClick={changeDisplay}>Shopping List</button></span>
+                <span className="min-max-button">
+                <button className="btn btn-secondary btn-xs" onClick={handleMax}>{maximized ? "_": "🗔" }</button></span>
             </div>
             <div className="date-select">
                 <form onSubmit={handleSubmit}>

@@ -1,4 +1,4 @@
-import '../styles/Register.css';
+import '../styles/Login.css';
 import {useState} from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import { MPApi } from '../api';
@@ -42,12 +42,12 @@ const Login = ({updateUser}) => {
 
     return (
         <div className="regpage">
-            <form onSubmit={handleSubmit}>
+            <form onSubmit={handleSubmit} className="login-form">
                 <label className="visually-hidden" htmlFor="username">user name</label>
                 <input value={formData.username} name="username" id="username" type="text" placeholder="username" onChange={handleChange}/>
                 <label className="visually-hidden" htmlFor="password">password</label>
                 <input value={formData.password} name="password" id="password" placeholder="password" type="password" onChange={handleChange}/>
-                <button onClick={handleSubmit}>Login</button>
+                <button className="btn btn-secondary" onClick={handleSubmit}>Login</button>
             </form>
             <p>or <Link to={'/register'}>register</Link> a new account</p>
             {warningVisible && <div className="auth_failure">Authentication failed.  Please try again</div>}

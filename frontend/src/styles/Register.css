@@ -25,14 +25,3 @@ input {
     border : none;
 
 }
-
-form {
-    width : 500px;
-    margin : 0 auto;
-    /* border-color: black;
-    border-width: 2px;
-    border-style: solid; */
-    box-shadow: inset 2px 2px rgb(82, 92, 92);
-    background-color :rgb(181, 217, 217);
-    padding : 20px 0px;
-}

@@ -62,9 +62,9 @@ export default function AddMeal({selectedMeal, planID, setPopupVisible, startDat
                     <input value={formData.time} name="time" id="meal-time" type="time" onChange={handleChange}/>
                     </span>
                 </div>
-                <input type="submit" value="add"/>
+                <input className="btn btn-secondary" type="submit" value="add"/>
+                <button className="btn btn-secondary" onClick={handleCancel}>cancel</button>
             </form>
-                <button onClick={handleCancel}>cancel</button>
             {warningVisible && <div className="validation_failure">Please make sure you select both a date and a time</div>}
 
         </div>

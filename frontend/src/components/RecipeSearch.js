@@ -27,7 +27,6 @@ export default function RecipeSearch({planID, startDate, endDate, fetchCalData, 
 
     return (
         <div id="search-area">
-            <h4>Search for meals to add</h4>
             <form onSubmit={handleSubmit}>
                 <div className="search-group">
                     <input value={searchString} type="text" id="search-bar" name="search-bar" placeholder='Search for a meal' onChange={handleChange} />

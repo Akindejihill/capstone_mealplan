@@ -16,3 +16,8 @@
 .loginpage input{
     color: black;
 }
+
+.login-form{
+    max-width: 100%;
+    border-radius: 20px;
+}

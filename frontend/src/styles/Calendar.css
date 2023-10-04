@@ -3,13 +3,18 @@
     text-align: left;
     border-radius: 10px;
     overflow-x:hidden;
+    margin: 0px;
 }
 
 .calendar-header{
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 3fr 1fr;
     background-color :#66d1fc40  ;
     line-height: 1;
+}
+
+.calendar-header .shoppinglist{
+    margin-left: 5px;
 }
 
 .date-select{
@@ -22,6 +27,7 @@
     background-color :#66d1fc40  ;
     line-height: 1;
     padding : 5px;
+    border-radius: 0;
 }
 
 .date-select span{
@@ -56,7 +62,7 @@
 #calendar-area{
     z-index: 100;
     line-height: 0px;
-    margin-top: 20px; 
+    /* margin-top: 20px;  */
 }
 
 .calendar{
@@ -113,22 +119,28 @@
 .maximized{
     display :block ;
     position : absolute;
-    width : 800px;
-    top: 50%;
+    max-width : 800px;
+    top: 70px;
     left: 50%;
-    transform: translate(-50%, -50%);
+    transform: translate(-50%, 0);
     background-color: aliceblue;
     font-size: 26px;
     max-height: 100vh;
     filter: drop-shadow(10px 6px 6px #21216a);
+    transition: max-width 0.5s, font-size 0.5s, transform 0.3s, top 1s, left 1s;
+}
+
+.window-container{
+    display: inline-block;
+    width : 400px; 
 }
 
 .window{
     background-color: aliceblue;
     display: inline-block;
     width : 400px; 
-    display: inline-block;
     font-size: 14px;
+    transition: width 0.5s, font-size 0.5s, transform 0.3s, left 1s, top 1s;
 }
 
 .shopping-list li{

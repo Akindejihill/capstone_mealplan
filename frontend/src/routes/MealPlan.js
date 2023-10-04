@@ -6,56 +6,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import RecipeSearch from "../components/RecipeSearch";
 import Calendar from "../components/Calendar";
 import ShowRecipe from "../components/ShowRecipe";
-
-
-//TODO put these two arrays in a static variable somewhere else
-const dietOptions = [
-    "balanced",
-    "high-fiber",
-    "high-protein",
-    "low-fat",
-    "low-carb",
-    "low-sodium",
-];
-
-const healthOptions = [
-    "alcohol-cocktail",
-    "alcohol-free",
-    "celery-free",
-    "crustacean-free",
-    "dairy-free",
-    "DASH",
-    "egg-free",
-    "fish-free",
-    "fodmap-free",
-    "gluten-free",
-    "immuno-supportive",
-    "keto-friendly",
-    "kidney-friendly",
-    "kosher",
-    "low-fat-abs",
-    "low-potassium",
-    "low-sugar",
-    "lupoine-free",
-    "Mediterranean",
-    "mollusk-free",
-    "mustard-free",
-    "no-oil-added",
-    "paleo",
-    "peanut-free",
-    "pescatarian",
-    "pork-free",
-    "red-meat-free",
-    "sesame-free",
-    "shellfish-free",
-    "soy-free",
-    "sugar-conscious",
-    "sulfite-free",
-    "tree-nut-free",
-    "vegan",
-    "vegetarian",
-    "wheat-free",
-];
+import { dietOptions, healthOptions } from '../helpers/constants';
 
 const MealPlan = () => {
     const navigate = useNavigate();
@@ -238,11 +189,11 @@ const MealPlan = () => {
     }, [healthTags]);
 
     return (
-        <main className="two-columns">
+        <main className="mealplan">
             <section id="plan-section">
                 {warningVisible && <div className="reg-failure">{error}</div>}
-                <h1>Edit Meal Plan</h1>
-                <form onSubmit={handleSubmit}>
+                <h2>Edit Meal Plan</h2>
+                <form onSubmit={handleSubmit} class="mealplan-form">
                     <label className="visually-hidden" htmlFor="label">
                         Plan name
                     </label>
@@ -306,7 +257,7 @@ const MealPlan = () => {
                         ))}
                     </div>
 
-                    <button onClick={handleSubmit}>Save meal plan</button>
+                    <button className="btn btn-secondary" onClick={handleSubmit}>Save meal plan</button>
                 </form>
                 {!showDeleteButton && <button className="delete-meal-plan" onClick={()=>{setShowDeleteButton(true)}}><img src={lock} width="15px" alt="Click here to reveal delete button"/></button>}
                 {showDeleteButton && <button className="delete-meal-plan" onClick={()=>{setShowDeleteConfirm(true)}}>Delete meal plan</button>}
@@ -326,13 +277,23 @@ const MealPlan = () => {
                 }
             </section>
             <section id="meal-section" >
-                <RecipeSearch planID={planID} startDate={startDate} endDate={endDate} fetchCalData={fetchCalData} setRecipeURI={setRecipeURI} recipeSwitch={recipeSwitch}/>
-                <Calendar startDate={startDate} endDate={endDate} setStartDate={setStartDate} setEndDate={setEndDate} calData={calData} fetchCalData={fetchCalData} planID={planID}/>
+                <div>
+                    <h2>Calendar</h2>
+                    <div className="window-container">
+                        <Calendar startDate={startDate} endDate={endDate} setStartDate={setStartDate} setEndDate={setEndDate} calData={calData} fetchCalData={fetchCalData} planID={planID}/>
+                    </div>
+                </div>
+                <div>
+                    <h2>Search for meals to add</h2>
+                    <RecipeSearch planID={planID} startDate={startDate} endDate={endDate} fetchCalData={fetchCalData} setRecipeURI={setRecipeURI} recipeSwitch={recipeSwitch}/>
+                </div>
             </section>
             {
                 recipeOpen &&
                 <section className="recipe">
-                    <div className="recipe-header"><button onClick={recipeSwitch}>X</button></div>
+                    <div className="recipe-header">
+                        <button className="recipe-close-button btn btn-secondary" onClick={recipeSwitch}>X</button>
+                    </div>
                     <ShowRecipe uri={recipeURI} />
                 </section>
             }

@@ -14,7 +14,7 @@ function SharedLayout({user, updateUser}) {
 
 
     return (
-        <div className="Shared">
+        <div className="shared">
             <Header user={user} updateUser={updateUser} key={key}/>
             <div className="content">
                 <Outlet />

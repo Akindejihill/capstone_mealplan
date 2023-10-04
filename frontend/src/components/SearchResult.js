@@ -29,8 +29,9 @@ export default function SearchResult({recipe, variant, setSelectedMeal, setPopup
         <div className="search-result">
             <img className="recipe-thumb" src={recipe.images.THUMBNAIL.url} />
             <div className={variant ? "color-strip1" : "color-strip2"}>
-                <span className="recipe-label"><button value={recipe.uri} onClick={openRecipe}>{recipe.label}</button></span>
+            <span className="recipe-label"><button value={recipe.uri} onClick={openRecipe}>{recipe.label}</button></span>
             </div>
+            <span className="empty"></span>
             <button className="add-meal-button" onClick={clickHandler}>Add</button>
         </div>
     );

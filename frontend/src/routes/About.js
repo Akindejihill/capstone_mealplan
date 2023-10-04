@@ -22,7 +22,10 @@ export default function About(){
                 Feel free to create an account and try it out, but keep in mind that this is
                 alpha software, not even beta.  I may still need to scrub the database from 
                 time to time at this stage, so don't spend lots of time planning for the month.
-                I would recommend only setting a weekly meal plan at most.  You can create a 
+                I would recommend only setting a weekly meal plan at most.  
+            </p>    
+            <p>
+                You can create a 
                 single meal plan for your family, or one for each member if you have people with
                 unique requirements like mine. Search for meals to add to you calendar
                 and access nutrition information and your shopping list based on what

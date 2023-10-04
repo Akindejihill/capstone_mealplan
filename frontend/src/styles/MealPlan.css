@@ -1,26 +1,45 @@
-.two-columns{
+/* .two-columns{
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-gap: 5px;
+} */
+
+
+.mealplan{
+    display: flex;
+    flex-wrap: wrap-reverse;
+    align-items:start ;
+    justify-content: center;
 }
+
 
 #plan-section{
     display : inline-block;
     padding : 10px 0px;
-    width : 400px;
-    grid-column: 1 / span 1;
-    justify-self: end;
+    max-width : 400px;
+    font-size: 1rem;
+    /* grid-column: 1 / span 1; */
+    /* justify-self: end; */
 }
 
 #meal-section{
-    display : inline-block;
+    display : inline-flex;
+    flex-wrap: wrap;
+    align-items: start;
     padding : 10px 0px;
-    width : 400px;
-    grid-column: 2 / span 1;
+    width: auto;
+    max-width : 800px;
+    /* grid-column: 2 / span 1; */
+}
+
+#mealplan h2{
+    margin-bottom: 10px;
+    margin-top: 10px;
 }
 
 #plan-section form {
     width : 400px;
+    border-radius: 10px;
 }
 
 .check-tag{
@@ -29,22 +48,17 @@
     margin-right : 2px;
 }
 
-.tag{
-    display : inline-block;
-    width : auto;
-    font-size: 14px;
-    margin-right : 6px;
-    background-color: rgb(232, 228, 187);
-    border-radius: 10%;
-    padding : 3px;
-    margin : 5px 5px;
-    height : 15px;
-}
-
 .tag label, .tag input{
     line-height: 0;
     height : 10px;
-    margin : 0 0;
+    margin : 0px;
+    font-size: 1rem;
+    padding: 0px;
+}
+
+.tag label{
+    position: relative;
+    top : 5px;
 }
 
 .diet-options, .health-options{
@@ -52,27 +66,51 @@
     padding : 10px 10px;
 }
 
+.tag{
+    display : inline-flex;
+    align-items: center;
+    width : auto;
+    margin-right : 6px;
+    background-color: rgb(232, 228, 187);
+    border-radius: 10px;
+    padding : 3px;
+    margin : 5px 5px;
+    height : 20px;
+}
+
+/*The pop-up recipe preview*/
 section.recipe{
     display : block;
     position : absolute;
     background-color: rgba(255, 255, 255, 0.929);
-    width : 800px;
-    /* height : 600px; */
+    min-width : 410px;
+    width : 90%;
+    max-width : 900px;
+    /* max-height : 600px; */
     z-index : 100;
-    top: 50%;
+    top: 60px;
     left: 50%;
-    transform: translate(-50%, -50%);
+    transform: translate(-50%, 0);
     border-radius: 10px;
     border : solid;
 }
 
 .recipe-header{
+    position : relative;
+    top : 0px;
     background-color: rgba(0, 85, 255, 0.43);
+    max-height: 40px;
+    font-size: 1rem;
 }
 
-.delete-meal-plan{
-
+.recipe-close-button{
+    position : relative;
+    margin: 0 0;
+    top : 0px;
+    border: solid rgb(68, 68, 68);
 }
+
+
 
 .confirm-delete-plan{
     background-color: rgba(255, 114, 114, 0.43);
@@ -101,4 +139,13 @@ section.recipe{
 
 .confirm-delete{
     background-color: rgb(239, 23, 23);
+}
+
+form.mealplan-form h4{
+    border: thick double rgb(50, 161, 206);
+    border-radius: 20px;
+    margin: 1px auto;
+    width : 90%;
+    color: rgb(50, 161, 206);
+    text-shadow: 0px, 0px, 0;
 }
