@@ -26,7 +26,7 @@ class FoodApi {
    * @returns the part of the response data contained in the 'data' property
    */
   static async request(api, data = {}, method = "get", endpoint = "") {
-    console.debug("API Call: ", api, data, method, endpoint);
+    // console.debug("API Call: ", api, data, method, endpoint);  //Debugging
 
     const URLs = {
         food : "https://edamam-food-and-grocery-database.p.rapidapi.com",
@@ -47,7 +47,6 @@ class FoodApi {
 
     const url = URLs[api];
     const urlEndpoint = url + "/" + endpoint;
-    console.log("URL is: ", urlEndpoint);
     const headers = headerSelection[api];
     const params = (method === "get")
         ? data
@@ -96,7 +95,7 @@ class FoodApi {
     }
     
     const resp = await FoodApi.request('recipeSearch', data, 'get', "api/recipes/v2");
-    console.log("response: ", resp);
+    // console.log("response: ", resp); //Debugging
 
     if (resp.error){
       return resp.error
@@ -132,7 +131,7 @@ class FoodApi {
 
 
 
-  ///////////////// tests
+  ///////////////// External API tests
   static async testItem(search){
     const data={ingr : search};
 

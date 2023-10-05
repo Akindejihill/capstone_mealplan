@@ -90,11 +90,11 @@ export default function Calendar({startDate, endDate, setStartDate, setEndDate, 
             <div className="date-select">
                 <form onSubmit={handleSubmit}>
                     <span>
-                        <label htmlFor="meal-date">Start date</label>
+                        <label className="date-label" htmlFor="meal-date">Start date</label>
                         <input className="date-input" value={formData.startDate} name="startDate" id="startDate" type="date" onChange={handleChange}/>
                     </span>
                     <span>
-                        <label htmlFor="meal-time">End date</label>
+                        <label className="date-label" htmlFor="meal-time">End date</label>
                         <input className="date-input" value={formData.endDate} name="endDate" id="endDate" type="date" onChange={handleChange}/>
                     </span>
                     <span id="date-submit">
@@ -120,7 +120,7 @@ export default function Calendar({startDate, endDate, setStartDate, setEndDate, 
                 }
                 {displayMode === "calendar" &&
                     <div className="calendar">
-                        <div className="day-label" >Monday</div>
+                        <div className="day-label">Monday</div>
                         <div className="day-label">Tuesday</div>
                         <div className="day-label">Wednesday</div>
                         <div className="day-label">Thursday</div>

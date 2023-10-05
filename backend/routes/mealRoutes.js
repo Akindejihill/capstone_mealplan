@@ -54,14 +54,14 @@ mealRouter.post('/', async function(request, response, next){
     const [meal, mealError] = await MPDB.addMealEvent(planid, userid, date, time, recipe_uri, preparation_url, title, meal_type_label, image_url);
 
     if (!meal) {
-        console.log("Error: ", mealError);
+        console.debug("Error: ", mealError);
         return next(mealError);
     } 
 
     //add the ingredients for the meal event
     const [success, ingrError] = await MPDB.addIngredients(meal, ingredients);
     if (!success) {
-        console.log("Error: ", ingrError);
+        console.debug("Error: ", ingrError);
         return next(ingrError);
     } else {
         return response.status(200).json({status : "success", mealid : meal})
@@ -206,7 +206,6 @@ mealRouter.get('/search', async function(request, response, next){
         const diet = plan.diet_preferences ? plan.diet_preferences.split(","): false;
 
         const recipes = await FoodAPI.recipeSearch(search, diet, health);
-        console.log(recipes);
         return response.status(200).json(recipes);
 
     }     

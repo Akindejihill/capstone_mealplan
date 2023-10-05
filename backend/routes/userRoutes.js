@@ -39,9 +39,6 @@ userRouter.post('/auth', async function(request, response, next){
     const authentication = request.body;
     const username = authentication.username;
     const password = authentication.password;
-    console.log(request.body);
-    console.log(`\n\nauth info: username: ${username}, password: ${password}`);
-    // const [token, passport, error] = await MPDB.auth(username, password);
     const [passport, error] = await MPDB.auth(username, password);
   
   
@@ -87,7 +84,6 @@ userRouter.post('/', async function(request, response, next){
             return next(error);
         } else {
             const token = jwt.sign({userid, first_name, last_name}, SECRET_KEY);
-            console.log("New Token issued: ",token);
             return response.send({
                                     "status" : "success",
                                     "profile" : {"userid" : userid, "email" : email, "first_name" : first_name, "last_name" : last_name},
@@ -165,8 +161,6 @@ userRouter.patch('/', async function(request, response, next){
         const updateFields = request.body.update;
         const oldPassword = request.body.oldPassword;
 
-        console.log("Update: ", updateFields);
-
         //require password change requests to authenticate
         if (updateFields.password){
             const [passport, authError] = await MPDB.auth(userid, oldPassword);
@@ -182,7 +176,6 @@ userRouter.patch('/', async function(request, response, next){
             return next(error);
         } else {
             const token = jwt.sign(passport, SECRET_KEY);// passport contains {userid, first_name, last_name}
-            console.log("New Token issued: ",token);
             return response.send({
                                     "status" : "success",
                                     "patched" : {"userid" : userid, "first_name" : passport.first_name, "last_name" : passport.last_name},

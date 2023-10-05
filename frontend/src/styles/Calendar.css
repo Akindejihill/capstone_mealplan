@@ -19,6 +19,7 @@
 
 .date-select{
     /* text-align: left; */
+    /* font-size: 60%; */
 }
 
 .date-select > form{
@@ -32,11 +33,16 @@
 
 .date-select span{
     align-self : end ;
+    justify-self: center;
 }
 
 #date-submit{
     width : auto;
     display : inline;
+}
+
+.date-label, .date-input{
+    display: block;
 }
 
 .date-select .date-input{
@@ -66,12 +72,15 @@
 }
 
 .calendar{
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
     overflow-y: scroll;
+
 }
 
 .day, .day-label{
     display : inline-block;
-    width : 13%;
+    /* width : 13%; */
     border: solid;
     margin : 0 0;
     line-height: 1;
@@ -88,10 +97,6 @@
     display: none;
   }
 
-.day-label{
-    overflow: hidden;
-}
-
 .maximized .day{
     height: 200px;
 }
@@ -104,7 +109,10 @@
 .day-label{
     text-align: center;
     background-color: #32a1ce;
-    font-size: 70%;
+    font-size: 1.1rem;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
 }
 
 .blank{
@@ -119,7 +127,9 @@
 .maximized{
     display :block ;
     position : absolute;
-    max-width : 800px;
+    min-width : 400px;
+    max-width : 900px;
+    width:80%;
     top: 70px;
     left: 50%;
     transform: translate(-50%, 0);
@@ -128,6 +138,11 @@
     max-height: 100vh;
     filter: drop-shadow(10px 6px 6px #21216a);
     transition: max-width 0.5s, font-size 0.5s, transform 0.3s, top 1s, left 1s;
+}
+
+
+.maximized .date-select{
+    font-size : clamp(14px, 2.5vw, 30px);
 }
 
 .window-container{

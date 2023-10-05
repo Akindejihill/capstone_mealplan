@@ -27,7 +27,6 @@ class MPDB {
             const binaryPass = user.password;
             const first_name = user.first_name;
             const last_name = user.last_name;
-            console.log("password from db: ", binaryPass);
 
             //validating password
             // Convert the binary password to a Buffer
@@ -38,10 +37,10 @@ class MPDB {
             const valid = await bcrypt.compare(password, passHash);
 
             if (valid) {
-                console.log("YAY, Password is valid");
+                // console.log("YAY, Password is valid");
                 return [{userid, first_name, last_name}, null];
             } else {
-                console.log("Boooo, password is sus");
+                // console.log("Boooo, password is sus");
                 return [false, new ExpressError("User authentication failed", 401)];
             }
 
@@ -306,7 +305,7 @@ class MPDB {
                 [planid]
             );
             if (mealList.rows.length === 0) {
-                console.log("No meals found in mealplan");
+                // console.log("No meals found in mealplan");
                 //Delete the meal plan right away and return
                 const success = await db.query(
                     `
@@ -315,11 +314,11 @@ class MPDB {
                     [planid]
                 );
 
-                if (success) {
-                    console.log(success);
-                } else {
-                    console.log("No feedback from server, ignoring");
-                }
+                // if (success) {
+                //     console.log(success);
+                // } else {
+                //     console.log("No feedback from server, ignoring");
+                // }
 
                 return [true, null];
             } 
@@ -333,8 +332,8 @@ class MPDB {
 
             //collect all the mealIDs we need for the prepared statement list
             const mealIdList = mealList.rows.map(row => row.id);
-            console.log("symbols: ", symbolString);
-            console.log("Meal IDs: ", mealIdList);
+            // console.log("symbols: ", symbolString);
+            // console.log("Meal IDs: ", mealIdList);
        
             //now remove all the ingredients at once
             const nuke = await db.query(
@@ -357,11 +356,11 @@ class MPDB {
                 [planid]
             );
 
-            if (result) {
-                console.log(result);
-            } else {
-                console.log("No feedback from server, ignoring");
-            }
+            // if (result) {
+            //     console.log(result);
+            // } else {
+            //     console.log("No feedback from server, ignoring");
+            // }
             
             //finally delete the meal plan
             const success = await db.query(
@@ -371,11 +370,11 @@ class MPDB {
                 [planid]
             );
 
-            if (success) {
-                console.log(success);
-            } else {
-                console.log("No feedback from server, ignoring");
-            }
+            // if (success) {
+            //     console.log(success);
+            // } else {
+            //     console.log("No feedback from server, ignoring");
+            // }
 
             return [true, null];
 
@@ -481,11 +480,11 @@ class MPDB {
                     [mealid, ingredient.text, ingredient.quantity, ingredient.measure, ingredient.food, ingredient.weight, ingredient.foodId]
                 );
                 if (ingr.rows.length === 0){
-                    console.log("Database did not add ingredient for some reason")
+                    // console.log("Database did not add ingredient for some reason")
                     return [false, new ExpressError("Database did not add ingredient for some reason", 500)]
-                } else {
-                    console.log("Ingredient added to database")
-                }
+                } //else {
+                    // console.log("Ingredient added to database")
+                //}
             };
             return [true, null];
 
@@ -639,11 +638,11 @@ class MPDB {
                 WHERE meal = $1`,
                 [mealid]
             );
-            if (result) {
-                console.log(result);
-            } else {
-                console.log("No feedback from server, ignoring");
-            }
+            // if (result) {
+            //     console.log(result);
+            // } else {
+            //     console.log("No feedback from server, ignoring");
+            // }
         } catch (error) {
             return [false, error];
         }
@@ -658,11 +657,11 @@ class MPDB {
                 [mealid]
             );
 
-            if (success) {
-                console.log(success);
-            } else {
-                console.log("No feedback from server, ignoring");
-            }
+            // if (success) {
+            //     console.log(success);
+            // } else {
+            //     console.log("No feedback from server, ignoring");
+            // }
             return [true, null];
         } catch (error) {
             return [false, error];
@@ -727,7 +726,6 @@ class MPDB {
                 let day = {date : dateCursor, DOW : date.getDay(), meals : []};
 
                 //for each record, compare the date (record.date) to the temp variable dateCursor
-                console.log("Meals: ", meals);
                 meals.forEach( (record) => {
                     const mealDate = new Date(record.date).toISOString().slice(0, 10); //date of the next meal, as a ISO Formated string
                     if(dateCursor === mealDate){
@@ -824,7 +822,6 @@ class MPDB {
                 }
             });
 
-            console.log("Grocery List: ", groceryList);
             return [groceryList, null];
 
         } catch (error){

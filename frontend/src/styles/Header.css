@@ -1,5 +1,5 @@
 .App-logo {
-    height: 5vmin;
+    height: clamp(30px, 5vw, 50px);
     pointer-events: none;
   }
   
@@ -13,10 +13,11 @@
     background-color: #282c34;
     /* min-height: 100vh; */
     display: grid;
-    grid-template-columns: 1fr 6fr 1fr; 
+    grid-template-columns: 1fr 10fr 80px;    
     align-items: center;
     justify-content: center;
-    font-size: 12px;
+    /* font-size: 12px; */
+    font-size: clamp(12px, 2.5vw, 18px);
     color: white;
     height: 60px;
     margin : 0 0;
@@ -25,12 +26,19 @@
     border-bottom-left-radius: 20px ;
   }
 
+  .links{
+    display: flex;
+    justify-content: space-evenly;
+  }
+
   .App-header .start{
     justify-self: start;
   }
 
   .App-header .end{
-    justify-self: end;
+    display : flex;
+    align-items : center;
+    justify-content : center;
   }
   
   .navLink {
@@ -81,9 +89,14 @@
     }
   }
 
+#user_button{
+    margin: 0;
+    align-self: start;
+}
 
 #user_button p{
     margin: 0 auto;
+    font-size: 0.7rem;
  }
 
 #user_button:hover{
@@ -93,6 +106,7 @@
   .profile_icon {
     display: inline-block;
     width:30px;
-    height:30px;
+    /* height:30px; */
+    width: clamp(20px, 5vw, 30px);
     border-radius: 50% 50%;
   }

@@ -1,6 +1,6 @@
 export default function Attribution(){
     return (
-        <div className="story">
+        <div className="story container" style={{textAlign: 'left'}}>
             <h1>Attributions</h1>
             <p>Thanks to Jason Shelley, my mentor from the Rithm School</p>
             <p><a href="https://www.rithmschool.com/">Rithm School's</a> bootcamps in conjunction with USF</p>

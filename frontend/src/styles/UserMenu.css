@@ -1,7 +1,10 @@
 #user_menu {
+    position : absolute;
+    top : 60px;
     background: black;
-    font-size: 18px;
+    font-size: 14px;
     padding : 5px;
+    margin : 0;
     text-align: right;
     z-index: 100; 
     border: thick double #32a1ce;

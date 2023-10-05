@@ -1,6 +1,6 @@
 export default function About(){
     return(
-        <div className="story">
+        <div className="story container" style={{textAlign: 'left'}}>
             <h1>About this project</h1>
             <p>
                 In college I was great at databases, but not so great at coding.

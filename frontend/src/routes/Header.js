@@ -29,8 +29,8 @@ function Header({user, updateUser}) {
         //if user is logged in provide a more advanced user widget
         userButton = (
             <div id="user_button" tabIndex="1" onClick={toggleUserMenu}>
-                <img className="profile_icon" src={user_icon} alt="profile picture"/>
                 <p>{username}</p>
+                <img className="profile_icon" src={user_icon} alt="profile picture"/>
             </div>
         );
     }
