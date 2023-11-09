@@ -48,7 +48,7 @@ function Header({user, updateUser}) {
             <span className="start">
                 <img src={logo} className="App-logo" alt="logo" />
             </span>
-            <span class="links"> 
+            <span className="links"> 
                 <span className="navLink">
                     <Link to={'/'} className="link">
                         Home

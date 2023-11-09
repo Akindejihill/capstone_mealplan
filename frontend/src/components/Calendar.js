@@ -18,6 +18,7 @@ export default function Calendar({startDate, endDate, setStartDate, setEndDate, 
         endDate : ""
     });
 
+    const [warning, setWarning] = useState("");
     const [warningVisible, setWarningVisible] = useState(false);
 
     //handles when the min/max button is clicked
@@ -51,6 +52,7 @@ export default function Calendar({startDate, endDate, setStartDate, setEndDate, 
 
         //validate
         if (formData.startDate === "" || formData.endDate === ""){
+            setWarning("Please make sure you select both a date and a time");
             setWarningVisible(true);
         } else {
             setWarningVisible(false);
@@ -101,7 +103,7 @@ export default function Calendar({startDate, endDate, setStartDate, setEndDate, 
                         <input id="date-submit" type="submit" value="refresh"/>
                     </span>
                 </form>
-                {warningVisible && <div className="validation_failure">Please make sure you select both a date and a time</div>}
+                {warningVisible && <div className="calendar_warning">{warning}</div>}
             </div>
             <div className="display-area">
                 {displayMode === "shoppinglist" &&

@@ -9,10 +9,9 @@ const UserMenu = ({uMVisibility, toggleUserMenu, updateUser}) => {
     function logout(){
         localStorage.removeItem('token');
         localStorage.removeItem('user');
-        // window.location = "/";
         console.log("Logout clicked");
         updateUser(null);
-        //navigate('/');  Why does this not work??
+        navigate('/');
     }
 
     return (

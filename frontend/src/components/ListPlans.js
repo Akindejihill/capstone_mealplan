@@ -13,7 +13,7 @@ const ListPlans = () => {
         async function getList(){
             const userData = localStorage.getItem('user');
 
-            if (userData){
+            if (userData && userData !== "null"){
                 setUser(JSON.parse(userData));
                 const [plans, error] = await MPApi.getPlanList();
                 if (error){
@@ -27,10 +27,9 @@ const ListPlans = () => {
 
                     setList(list);
                 }
-
             } else {
                 //setUserID(null);
-                setList([{label : "No meal plans yet", id : null, description : "create a meal plan"}])
+                setList([{label : "You are not logged in", id : null, description : "Login to view your mealplans"}])
             }
         }
 
@@ -45,7 +44,7 @@ const ListPlans = () => {
             <ul>
                 {
                     //display a pair of list items for each plan in the list
-                    list.map(plan => <li key={plan.id}><Link to={`/plan/${plan.id}`}>{plan.label}</Link>
+                    list.map(plan => <li key={plan.id}>{user ? <Link to={`/plan/${plan.id}`}>{plan.label}</Link> : plan.label }
                                         <ul>
                                             <li>{plan.description}</li>
                                         </ul>

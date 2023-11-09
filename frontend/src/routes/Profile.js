@@ -74,7 +74,7 @@ const Profile = ({updateUser}) => {
 
     return (
         <>
-            <div class="profile-header">
+            <div className="profile-header">
                 <h1>{profile.userid}'s Profile</h1>
             </div>
             <div className="regpage">

@@ -10,10 +10,9 @@ import {useState, useEffect} from 'react';
 import {BrowserRouter, Routes, Route} from 'react-router-dom';
 import Home from "./routes/Home";
 import About from "./routes/About";
-// import {KBApi} from './api.js';
-//import axios from "axios";
+
 const APIUrl = "http://mealplan.cerebro.homelinux.net/api";
-//const APIUrl = "http://cerebro:3001/api";
+//const APIUrl = "http://cerebro:4000/api";
 
 
 function App(){

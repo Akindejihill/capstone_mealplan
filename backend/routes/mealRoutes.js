@@ -223,8 +223,9 @@ mealRouter.get('/lookup', async function(request, response, next){
         return next(new ExpressError("You do not have permission to access this resource", 401));
     }
     const uri = request.query.uri;
-
+    //console.log("The URI I'm sending is: ", uri); //for development
     const recipes = await FoodAPI.recipeLookup(uri);
+    //console.log("The data I got back is:", recipes); //for development
     return response.status(200).json(recipes);
 
 });

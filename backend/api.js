@@ -2,13 +2,12 @@
 //use this to connect to the Edemom food database API
 
 const axios = require('axios');
-//const db = require('./db');
-//const bcrypt = require("bcrypt");
-
 require('dotenv').config();
 
-const key = process.env.FOOD_API_KEY;
-const app_id = process.env.FOOD_API_APP_ID;
+const recipeKey = process.env.RECIPE_API_KEY;
+const recipeApp_id = process.env.RECIPE_API_APP_ID;
+const foodKey = process.env.FOOD_API_KEY;
+const foodApp_id = process.env.FOOD_API_APP_ID;
 
 /** API Class.
  *This class contains all the API calls in one place
@@ -29,18 +28,13 @@ class FoodApi {
     // console.debug("API Call: ", api, data, method, endpoint);  //Debugging
 
     const URLs = {
-        food : "https://edamam-food-and-grocery-database.p.rapidapi.com",
-        // recipeSearch : "https://edamam-recipe-search.p.rapidapi.com",
+        food : "https://api.edamam.com",
         recipeSearch : "https://api.edamam.com",
         recipeLookup : "https://api.edamam.com"
     }
 
     const headerSelection = {
-        food : {
-            "X-RapidAPI-Key" : key,
-            "X-RapidAPI-Host" : "edamam-food-and-grocery-database.p.rapidapi.com"
-          },
-        
+        food : {},        
         recipeSearch : {},
         recipeLookup : {}
     }
@@ -76,8 +70,8 @@ class FoodApi {
     data.append('q', search);
     data.append('type', 'public');
     data.append('random', 'False');
-    data.append('app_id', app_id);
-    data.append('app_key', key);
+    data.append('app_id', recipeApp_id);
+    data.append('app_key', recipeKey);
 
 
     if (diet)
@@ -113,53 +107,43 @@ class FoodApi {
     const data = {
       "uri" : uri,
       "type" : "public",
-      "app_id" : app_id,
-      "app_key" : key
+      "app_id" : recipeApp_id,
+      "app_key" : recipeKey
     }
 
     const resp = await FoodApi.request('recipeLookup', data, 'get', "api/recipes/v2/by-uri");
-    console.log("response: ", resp);
+    //console.log("response: ", resp);  //see what the response looks like
 
     if (resp.error){
       return resp.error
     } else {
       //make the data a bit more managable
-      const recipes = resp.hits ? resp.hits[0] : "";
-      return recipes;
+      const recipe = resp.hits ? resp.hits[0].recipe : "";
+      //console.log("recipe: ", recipe);  //see what the result looks like
+      return recipe;
     }
   }
 
 
-
-  ///////////////// External API tests
-  static async testItem(search){
-    const data={ingr : search};
-
-    const resp = await FoodApi.request("food", data, 'get', "api/food-database/v2/parser");
-    console.log("response: ", resp);
-    if (!resp.error){
-        return resp.text;
-    } else return resp.error;
-  }
-
-
-  
-  static async testGetRecipe(id){
+  /**
+   * Lookup a food item
+   * @param {*} search 
+   * @returns 
+   */
+  static async lookupItem(search){
     const data={
-      r : id,
+      "ingr" : search,
+      "uri" : "api/food-database/v2/parser",
+      "type" : "public",
+      "app_id" : foodApp_id,
+      "app_key" : foodKey
     };
 
-    //const endpoint = "api/recipes/v2/" + id;
-
-    const resp = await FoodApi.request('recipe', data, 'get', "search");
-    console.log("response: ", resp);
+    const resp = await FoodApi.request("food", data, 'get', "api/food-database/v2/parser");
     if (!resp.error){
-      return "Response recieved!  Check log!"
-
+        return resp;
     } else return resp.error;
-
   }
-
 
 
 

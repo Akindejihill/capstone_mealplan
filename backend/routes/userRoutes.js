@@ -36,6 +36,7 @@ const jwt = require('jsonwebtoken');
 }
 */    
 userRouter.post('/auth', async function(request, response, next){
+    console.log("AUTH ROUTE REACHED!");
     const authentication = request.body;
     const username = authentication.username;
     const password = authentication.password;

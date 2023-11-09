@@ -2,8 +2,7 @@
 
 import axios from "axios";
 
-const BASE_URL = process.env.REACT_APP_BASE_URL || "http://localhost:3000/api";
-
+const BASE_URL = process.env.REACT_APP_BASE_URL || "http://cerebro:4000/api"; //you may need to change the local address to "http://localhost:4000/api"
 /** API Class.
  *This class contains all the API calls in one place
  *Better for organization and debugging
@@ -13,7 +12,6 @@ export class MPApi {
     static token = localStorage.getItem("token");
 
     /**
-     * This function is curtosy of Rythm school.
      * Call request to make the API call.
      * @param {*} endpoint - the route, or part of the url after the domain.
      * @param {*} data - an object containing the data to be sent to the api in requests
@@ -21,16 +19,18 @@ export class MPApi {
      * @returns the part of the response data contained in the 'data' property
      */
     static async request(endpoint, data = {}, method = "get") {
+        console.log("Using base URL: ", BASE_URL);
 
         //Passing token through the header
         const url = `${BASE_URL}/${endpoint}`;
         const headers = { Authorization: `Bearer ${MPApi.token}` };
-        const params = method === "get" ? data : {};
+        const params = method === "get" ? data : {}; //This may be gonking things up
 
         try {
             return (await axios({ url, method, data, params, headers })).data;
         } catch (err) {
-            console.error("API Error:", err.response);
+            console.log("There was an error communicating with API");
+            console.error("API Error:", err);
             let message = err.response.data.error.message;
             throw Array.isArray(message) ? message : [message];
         }
@@ -66,6 +66,7 @@ export class MPApi {
             );
 
             if (authData.status === "login successfull") {
+                console.log("Login successfull!");
                 MPApi.token = authData.token;
                 const user = authData.user;
                 localStorage.setItem("token", MPApi.token);
@@ -74,6 +75,7 @@ export class MPApi {
                 return [true, null];
             }
         } catch (error) {
+            console.error("Authentication Error: ",error);
             return [true, null];
         }
     }
@@ -242,21 +244,10 @@ export class MPApi {
 
     static async addMealEvent(date, time, selectedMeal, planID){
 
-        // /**Why I'm using mock_ingredients...
-        //  * I coded the backend application 
-        //  * to expect data based on Edamam documentation 
-        //  * and demo, however I'm using a version of their
-        //  * API provided  by a host called RapidAPI and the 
-        //  * data that actually comes back is different than what
-        //  * is specified in the documentation or displayed in
-        //  * in the demo.  I have tried to connect to the 
-        //  * endpoint on the acrual edamam website but I'm 
-        //  * having trouble with that. I will either get
-        //  * everything resolved through edamam support or I
-        //  * will recode the backend to use the less than
-        //  * desireable data that I'm getting back from RapidAPI.
-        //  * Until then I will have to use this mock ingredient
-        //  * data. 
+        // /**Mock Ingredients
+        //  * Incase the edamam API fails or we start having some
+        //  * communication issues with it, we can use this mock
+        //  * ingredients to test our end of the system.
         //  */
         // const mock_ingredients = [
         //     {
@@ -438,7 +429,7 @@ export class MPApi {
 
         try {
             const result = await this.request("meals/lookup", {"uri" : uri}, "get" );
-            return [result.recipe, null];
+            return [result, null];
         } catch (error) {
             return [false, error];
         }

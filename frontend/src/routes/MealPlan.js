@@ -193,7 +193,7 @@ const MealPlan = () => {
             <section id="plan-section">
                 {warningVisible && <div className="reg-failure">{error}</div>}
                 <h2>Edit Meal Plan</h2>
-                <form onSubmit={handleSubmit} class="mealplan-form">
+                <form onSubmit={handleSubmit} className="mealplan-form">
                     <label className="visually-hidden" htmlFor="label">
                         Plan name
                     </label>

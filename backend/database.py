@@ -5,6 +5,7 @@ import datetime, traceback
 
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql:///mealplan'
+#app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql:///mealplan_test'
 db = SQLAlchemy(app)
 
 app.app_context().push()
