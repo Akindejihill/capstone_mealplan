@@ -1,12 +1,14 @@
 import '../styles/Calendar.css';
 import { useState, useEffect } from "react";
+import { MPApi } from "../api";
 
-
-export default function Calendar({startDate, endDate, setStartDate, setEndDate, calData, fetchCalData, planID}){
+export default function Calendar({fetchCalData, planID}){
 
     const [maximized, setMaximized] = useState(false);
     const [maxClass, setMaxClass] = useState("window");
-
+    const [startDate, setStartDate] = useState("");
+    const [endDate, setEndDate] = useState("");
+    const [calData, setCalData] = useState({});
     const [days, setDays] = useState([]);
     const [shoppingList, setShoppingList] = useState({});
     const [blankDays, setBlankDays] = useState([]);
@@ -20,6 +22,25 @@ export default function Calendar({startDate, endDate, setStartDate, setEndDate, 
 
     const [warning, setWarning] = useState("");
     const [warningVisible, setWarningVisible] = useState(false);
+
+
+    //get Calendar data
+    async function fetchCalData(planID, startDate, endDate){
+        const [data, error] = await MPApi.getCalendar(planID, startDate, endDate);
+        if (error) {
+            alert(error);
+            console.log("Calendar Error: ", error);
+        } else {
+            //insert blank days into the calendar for empty 
+            //days of the week before the first scheduled meal
+            const inserts = data.days[0].DOW  //number of blank inserts we need
+            for(let i = 0; i < inserts ; i++){
+                data.days.unshift({blank : true})
+            }
+            setCalData(data);
+        }
+    }
+
 
     //handles when the min/max button is clicked
     function handleMax(evt){
@@ -79,6 +100,34 @@ export default function Calendar({startDate, endDate, setStartDate, setEndDate, 
             endDate : endDate
         });
     }, [startDate, endDate]);
+
+
+    useEffect(() => {
+            //set default startDate and endDate
+            const currentDate = new Date();
+            const nextWeek = new Date();
+            nextWeek.setDate(nextWeek.getDate() + 7);
+            let year = currentDate.getFullYear();
+            let month = String(currentDate.getMonth() + 1).padStart(2, "0"); 
+            let day = String(currentDate.getDate()).padStart(2, "0");
+            
+            const today = `${year}-${month}-${day}`;
+    
+            year = nextWeek.getFullYear();
+            month = String(nextWeek.getMonth() + 1).padStart(2, "0"); 
+            day = String(nextWeek.getDate()).padStart(2, "0");
+    
+            const nextWeekDay = `${year}-${month}-${day}`;
+    
+            setStartDate(today);
+            setEndDate(nextWeekDay);
+    
+            console.log("Start date: ", today);
+            console.log("End date: ", nextWeekDay);
+    
+            fetchCalData([planID, today, nextWeekDay]);
+    }, []);
+
 
     
     return (

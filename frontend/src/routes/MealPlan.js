@@ -22,28 +22,17 @@ const MealPlan = () => {
     const [dietTags, setDietTags] = useState([]);
     const [healthTags, setHealthTags] = useState([]);
     const [calData, setCalData] = useState({});
-    const [startDate, setStartDate] = useState("");
-    const [endDate, setEndDate] = useState("");
+    // const [startDate, setStartDate] = useState("");
+    // const [endDate, setEndDate] = useState("");
     const [recipeURI, setRecipeURI] = useState("");
     const [recipeOpen, setRecipeOpen] = useState(false);
     const [showDeleteButton, setShowDeleteButton] = useState(false);
     const [showDeleteConfirm, setShowDeleteConfirm] = useState(false);
 
-    //get Calendar data
-    async function fetchCalData(planID, startDate, endDate){
-        const [data, error] = await MPApi.getCalendar(planID, startDate, endDate);
-        if (error) {
-            alert(error);
-            console.log("Calendar Error: ", error);
-        } else {
-            //insert blank days into the calendar for empty 
-            //days of the week before the first scheduled meal
-            const inserts = data.days[0].DOW  //number of blank inserts we need
-            for(let i = 0; i < inserts ; i++){
-                data.days.unshift({blank : true})
-            }
-            setCalData(data);
-        }
+
+    //can be called form sub-components to refresh the calendar info
+    function refreshCal(){
+        setCalData(planID);
     }
 
     function recipeSwitch(){
@@ -65,6 +54,7 @@ const MealPlan = () => {
             [name]: value, //overide the target that was event triggered
         }));
     }
+    
 
     function handlePreferenceClick(evt) {
         if (evt.target.checked) {
@@ -138,30 +128,6 @@ const MealPlan = () => {
 
         setPlanID(params.planID);
         getPlanData(params.planID);
-
-        //set default startDate and endDate
-        const currentDate = new Date();
-        const nextWeek = new Date();
-        nextWeek.setDate(nextWeek.getDate() + 7);
-        let year = currentDate.getFullYear();
-        let month = String(currentDate.getMonth() + 1).padStart(2, "0"); 
-        let day = String(currentDate.getDate()).padStart(2, "0");
-        
-        const today = `${year}-${month}-${day}`;
-
-        year = nextWeek.getFullYear();
-        month = String(nextWeek.getMonth() + 1).padStart(2, "0"); 
-        day = String(nextWeek.getDate()).padStart(2, "0");
-
-        const nextWeekDay = `${year}-${month}-${day}`;
-
-        setStartDate(today);
-        setEndDate(nextWeekDay);
-
-        console.log("Start date: ", today);
-        console.log("End date: ", nextWeekDay);
-
-        fetchCalData(params.planID, today, nextWeekDay);
         
     }, []);
 
@@ -280,12 +246,12 @@ const MealPlan = () => {
                 <div>
                     <h2>Calendar</h2>
                     <div className="window-container">
-                        <Calendar startDate={startDate} endDate={endDate} setStartDate={setStartDate} setEndDate={setEndDate} calData={calData} fetchCalData={fetchCalData} planID={planID}/>
+                        <Calendar calData={calData} planID={planID}/>
                     </div>
                 </div>
                 <div>
                     <h2>Search for meals to add</h2>
-                    <RecipeSearch planID={planID} startDate={startDate} endDate={endDate} fetchCalData={fetchCalData} setRecipeURI={setRecipeURI} recipeSwitch={recipeSwitch}/>
+                    <RecipeSearch planID={planID} refreshCal={refreshCal} setRecipeURI={setRecipeURI} recipeSwitch={recipeSwitch}/>
                 </div>
             </section>
             {

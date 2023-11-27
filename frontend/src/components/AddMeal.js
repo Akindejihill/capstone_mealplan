@@ -10,7 +10,7 @@ import '../styles/AddMeal.css'
 import { useState, useEffect } from "react";
 import { MPApi } from "../api";
 
-export default function AddMeal({selectedMeal, planID, setPopupVisible, startDate, endDate, fetchCalData}){
+export default function AddMeal({selectedMeal, planID, setPopupVisible, refreshCal}){
 
     const [formData, setFormData] = useState({
         date : "",
@@ -39,7 +39,8 @@ export default function AddMeal({selectedMeal, planID, setPopupVisible, startDat
             }
 
             setPopupVisible(false);
-            fetchCalData(planID, startDate, endDate);
+            // refreshCal(planID, startDate, endDate);
+            refreshCal();
         }
     }
 

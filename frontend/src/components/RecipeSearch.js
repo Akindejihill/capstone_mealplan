@@ -4,7 +4,7 @@ import { MPApi } from "../api";
 import ResultsArea from './ResultsArea';
 import AddMeal from './AddMeal';
 
-export default function RecipeSearch({planID, startDate, endDate, fetchCalData, setRecipeURI, recipeSwitch}){
+export default function RecipeSearch({planID, refreshCal, setRecipeURI, recipeSwitch}){
  
     const [searchString, setSearchString] = useState("");
     const [resultArray, setResultArray] = useState([]);
@@ -38,7 +38,7 @@ export default function RecipeSearch({planID, startDate, endDate, fetchCalData, 
             </div>
             {
                 popupVisible && <div className="popup-form">
-                    <AddMeal selectedMeal={selectedMeal} planID={planID} setPopupVisible={setPopupVisible} startDate={startDate} endDate={endDate} fetchCalData={fetchCalData}/>
+                    <AddMeal selectedMeal={selectedMeal} planID={planID} setPopupVisible={setPopupVisible} refreshCal={refreshCal}/>
                 </div>
             }
         </div>
